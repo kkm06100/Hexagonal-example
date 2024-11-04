@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 /**
  * @apiNote 은행 계정, 외부를 향한 의존성이 없음
- *
  */
+
 public class BankAccount {
     private Long id;
     private BigDecimal balance;
@@ -19,14 +19,21 @@ public class BankAccount {
     }
 
     /**
+     * @apiNote
      * @return boolean
      */
     public boolean withdraw(BigDecimal amount) {
-        if(balance.compareTo(amount) < 0) {
+        if(balance.compareTo(amount) < 0) { // balance가 amount보다 작은 경우
+            /*
+            compareTo() Method
+            -1: balance가 amount보다 작은 경우
+            0: balance와 amount가 같은 경우
+            1: balance가 amount보다 큰 경우
+            */
             return false;
         }
 
-        balance = balance.subtract(amount);
+        balance = balance.subtract(amount); // 돈 감소
         return true;
     }
 
